@@ -1,0 +1,25 @@
+﻿@page "/sampling"
+@inject IJSRuntime JSRuntime
+
+<h3>Sampling</h3>
+
+<button class="btn btn-primary" @onclick="PerformSampling">Click me</button>
+
+<!-- Create a div where the graph will take place -->
+<div id="my_dataviz"></div>
+
+@code { 
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            await JSRuntime.InvokeVoidAsync("createD3SvgObject");
+        }
+    }
+
+    async Task PerformSampling()
+    {
+        await JSRuntime.InvokeVoidAsync("createD3SvgObject");
+    }
+}
