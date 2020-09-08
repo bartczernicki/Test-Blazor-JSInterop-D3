@@ -10,16 +10,35 @@
 
 @code { 
 
+    int Min = 0;
+    int Max = 10;
+
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
         if (firstRender)
         {
-            await JSRuntime.InvokeVoidAsync("createD3SvgObject");
+            int[] test2 = new int[1000];
+
+            Random randNum = new Random();
+            for (int i = 0; i < test2.Length; i++)
+            {
+                test2[i] = randNum.Next(Min, Max);
+            }
+
+            await JSRuntime.InvokeVoidAsync("createD3SvgObject", test2);
         }
     }
 
     async Task PerformSampling()
     {
-        await JSRuntime.InvokeVoidAsync("createD3SvgObject");
+        int[] test2 = new int[1000];
+
+        Random randNum = new Random();
+        for (int i = 0; i < test2.Length; i++)
+        {
+            test2[i] = randNum.Next(Min, Max);
+        }
+
+        await JSRuntime.InvokeVoidAsync("createD3SvgObject", test2);
     }
 }
